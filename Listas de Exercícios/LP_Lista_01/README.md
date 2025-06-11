@@ -33,116 +33,124 @@ Para mais informações acesse [Aula 01: Fluxogramas.](https://www.notion.so/cai
    
    ```mermaid
    flowchart TD
-        start(( inicio )) --> input1[\ Digite sua nota \]
-        input1 --> input2[\ Digite sua Frequencia em % \]
-        input2 --> test{ Nota >= 50 \n and \n Frequencia >= 75% }
-        test --> |Não| responsed1[\ reprovado \] 
-        test --> |Sim| responsed2[\ Aprovado \]
-        
-   ```` 
-   
-  
+      inicio(( Início )) --> entrada1[\Digite sua nota\]
+      entrada1 --> entrada2[\Digite sua frequência em %\]
+      entrada2 --> teste{Nota >= 50 \nE\n frequência >= 75% ?}
+      teste --> |Não| resposta1[/Reprovado/]
+      teste --> |Sim| resposta2[/Aprovado/]
+      resposta1 --> final([Fim])
+      resposta2 --> final
+    ```
    
 3. Crie um fluxograma para calcular a soma de dois números fornecidos pelo usuário.
    
    ```mermaid
    flowchart TD
-        start(( inicio )) --> input1[\ Digite o N1 \]
-        input1 --> input2[\Digite o N2 \]
-        input2 --> sum[Resultado = N1 + N2]
-        sum --> finish([fim])
+      inicio((Início)) --> entrada1[\Digite o primeiro número\]
+      entrada1 --> entrada2[\Digite o segundo número\]
+      entrada2 --> soma[Resultado = N1 + N2]
+      soma --> resultado[/Resultado/]
+      resultado --> fim([Fim])
    ```
    
-   4. Elabore um fluxograma que leia um número e exiba se ele é positivo ou negativo.
+4. Elabore um fluxograma que leia um número e exiba se ele é positivo ou negativo.
    
-      ```mermaid
-      flowchart TD
-            start(( inicio )) --> input1[/ Digite sua idade /]
-            input1 --> test{ Número >0 \n ou \n Número <0? }
-            test --> |Sim| A[\ Positivo \]
-            test --> |Não| B[\ Negativo \]
-            A --> Finish([Fim])
-            B --> Finish
-      ```
+   ```mermaid
+   flowchart TD
+      inicio((Início)) --> entrada[\Digite um número\]
+      entrada --> condicao{Número < 0?}
+      condicao --> |Sim| saida1[/Seu número é negativo/]
+      condicao --> |Não| saida2[/Seu número é positivo/]
+      saida2 --> fim([Fim])
+      saida1 --> fim
+   ```
    
 5. Desenvolva um fluxograma que leia a idade de uma pessoa e indique se ela pode votar.
    
    ```mermaid
    flowchart TD
-    start(( inicio )) --> input1[/ Digite sua idade \]
-    input1 --> test{ idade >16 \n ou \n Idade <16 }
-   test ==> |Sim| A[\ Positivo \]
-   test --> |Não| B[\ Negativo \]
-   A --> Finish([FIm])
-   B --> Finish
+      inicio((Início)) --> idade[\Digite sua idade\]
+      idade --> titulo[\Possui título de eleitor?\]
+      titulo --> condicao{Idade >= 16? \n E \n Possui titulo de eleitor?}
+      condicao --> |Sim| saida1[/Você pode votar/]
+      condicao --> |Não| saida2[/Você não pode votar/]
+      saida2 --> fim([Fim])
+      saida1 --> fim
    ```
    
 6. Crie um fluxograma que leia dois números e determine o maior entre eles.
    
    ```mermaid
    flowchart TD
-      start(( Inicio )) --> A[/ Digite N1 /]
-      start --> B[/ Digite N2 /]
-      A --> test{ N> determinado }
-      B --> test
-      test --> finish([Fim])
-   
-      
+      inicio((Início)) --> numero1[\Digite o primeiro número\]
+      numero1 --> numero2[\Digite o segundo número\]
+      numero2 --> condicao1{N1 > N2?}
+      condicao1 --> |Sim| resposta1[/O primeiro número é maior/]
+      resposta1 --> fim([Fim])
+      condicao1 --> |Não| condicao2{O segundo número é maior?}
+      condicao2 --> |Não| resposta3[/Os números são iguais/]
+      condicao2 --> |Sim| resposta2[/O segundo número é maior/]
+      resposta2 --> fim
+      resposta3 --> fim
    ```
    
 7. Crie um fluxograma que leia três números e determine o maior entre eles.
    
    ```mermaid
    flowchart TD
-      start(( inicio )) --> A[/ Digite N! /]
-   start --> B[/ Digite N2 /]
-   start --> C[/ Digite N3 /]
-   A --> test{ N> determinado }
-   B --> test
-   C --> test
-   test --> Finish([FIm])
-   
+      inicio((Início)) --> numero1[\Digite o primeiro número\]
+      numero1 --> numero2[\Digite o segundo número\]
+      numero2 --> numero3[\Digite o terceiro número\]
+      numero3 --> condicao1{N1 > N2?}
+      condicao1 --> |Não| condicao3{N2 > N3?}
+      condicao3 --> |Sim| resultado3[/O número 2 é o maior/]
+      resultado3 --> final
+      condicao3 --> |Não| resultado2
+      condicao1 --> |Sim| condicao2{N1> N3?}
+      condicao2 --> |Sim| resultado1[/O Número 1 é o maior/]
+      condicao2 --> |Não| resultado2[/O número 3 é o maior/]
+      resultado1 --> final([Fim])
+      resultado2 --> final
    ```
    
 8. Construa um fluxograma para calcular o fatorial de um número fornecido pelo usuário.
    
    ```mermaid
    flowchart TD
-   A(( Inicio )) --> B[/ Digite um numero /]
-   B --> C[r=1]
-   C --> D{n>1?}
-   D--> |Sim| E{r=r*n}
-   F --> D
-   D --> |Não| G[/ Resposta = r/]
-   G --> H([Fim])
+      A((Inicio)) --> B[/Digite um número/]
+      B --> C[r=1]
+      C --> D{n>1?}
+      D --> |Sim| E[r=r*n]
+      E --> F[n=n-1]
+      F --> D
+      D --> |Não| G[/Resposta = r/]
+      G --> H([Final])
       
    ```
    
 9. Elabore um fluxograma para verificar se um número digitado pelo usuário é par.
-   
-   > Em várias linguagens de programação, o operador % retorna o resto da divisão entre dois números.    
-   > 
-   >**Exemplos**:  
-   > - 9 % 2 = 1  
-   > - 11 % 3 = 2
-   
    ```mermaid
    flowchart TD
-      H["Sua resposta aqui!"]
+      inicio((Início)) --> entrada[\Digite um número\]
+      entrada --> condicao{Número % 2 = 0?}
+      condicao --> |Sim| saida1[/Seu número é par/]
+      condicao --> |Não| saida2[/Seu número é ímpar/]
+      saida2 --> fim([Fim])
+      saida1 --> fim
    ```
    
 10. Elabore um fluxograma para verificar se um número digitado pelo usuário é primo.
    
    ```mermaid
-    flowchart TD
-       I["Sua resposta aqui!"]
-       start(( Início )) --> A[/ Digite um número /]
-       A --> B[O número é >2?]
-       B --> C[Sim]
-       B --> D[Não]
-       C --> E[Fim]
-       D --> F[O N é divisvel por 2 até -1?]
-       F --> G[O N é divisível por 1 ou por ele mesmo?]
-       G --> J[Fim]
-    
+   flowchart TD
+      inicio((Início)) --> B[\Digite um número\]
+      B --> C[i=n/2]
+      C --> D{i>1?}
+      D --> |Sim| E{O resto da divisao \n de n por i é \n igual a zero?}
+      D --> |Não| F[/É primo/]
+      E --> |Sim| H[/Não é primo/]
+      E --> |Não| G[i=i-1]
+      G --> D
+      F --> I([Final])
+      H --> I
    ```
